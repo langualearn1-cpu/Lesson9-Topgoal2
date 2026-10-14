@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Months of the Year - شهور السنة | Glory English Academy</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Fredoka (Cartoon English) & Tajawal (Arabic) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --font-en: 'Fredoka', cursive, sans-serif;
+      --font-ar: 'Tajawal', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-ar);
+      background-color: #f1f5f9;
+      background-image: 
+        radial-gradient(#cbd5e1 1px, transparent 1px), 
+        radial-gradient(#e2e8f0 1px, #f1f5f9 1px);
+      background-size: 26px 26px;
+      background-position: 0 0, 13px 13px;
+      min-height: 100vh;
+      color: #1e293b;
+    }
+
+    .font-english {
+      font-family: var(--font-en);
+    }
+
+    /* Worksheet border doodle effects */
+    .worksheet-frame {
+      background: #ffffff;
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+      border-radius: 36px;
+    }
+
+    /* Sound-Visual Sync Glow */
+    .sync-active-glow {
+      box-shadow: 0 0 0 4px #0284c7, 0 12px 28px -4px rgba(2, 132, 199, 0.45) !important;
+      transform: scale(1.03) !important;
+      background-color: #eff6ff !important;
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Audio Equalizer wave animation */
+    .eq-wave-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 2.5px;
+      height: 14px;
+    }
+    .eq-bar {
+      width: 3px;
+      border-radius: 9999px;
+      background-color: #0284c7;
+      animation: eqBounce 0.65s ease-in-out infinite alternate;
+    }
+    .eq-bar:nth-child(1) { height: 4px; animation-delay: 0.1s; }
+    .eq-bar:nth-child(2) { height: 14px; animation-delay: 0.3s; background-color: #10b981; }
+    .eq-bar:nth-child(3) { height: 8px; animation-delay: 0.2s; background-color: #f59e0b; }
+
+    @keyframes eqBounce {
+      0% { height: 3px; }
+      100% { height: 14px; }
+    }
+
+    /* Live Word Karaoke Highlighting */
+    .k-word {
+      display: inline-block;
+      padding: 1px 4px;
+      margin: 0 1.5px;
+      border-radius: 6px;
+      transition: all 0.12s ease;
+    }
+    .k-word.k-active {
+      background: linear-gradient(135deg, #fef08a, #fde047) !important;
+      color: #0f172a !important;
+      font-weight: 900 !important;
+      transform: scale(1.15);
+      box-shadow: 0 0 12px rgba(234, 179, 8, 0.85);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Drag & Drop Styles */
+    .word-chip {
+      cursor: grab;
+      user-select: none;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .word-chip:active {
+      cursor: grabbing;
+      transform: scale(0.95);
+    }
+    .word-chip-selected {
+      box-shadow: 0 0 0 3px #0284c7, 0 8px 16px rgba(2, 132, 199, 0.35) !important;
+      background-color: #0284c7 !important;
+      color: #ffffff !important;
+      transform: scale(1.08) !important;
+    }
+    .drop-slot {
+      min-width: 140px;
+      transition: all 0.2s ease;
+    }
+    .drop-slot.drag-over {
+      background-color: #e0f2fe !important;
+      border-color: #0284c7 !important;
+      transform: scale(1.05);
+    }
+
+    /* Comic Speech Bubbles pointing down to characters */
+    .modern-bubble-char {
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .modern-bubble-char::after {
+      content: '';
+      position: absolute;
+      bottom: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 11px solid transparent;
+      border-right: 11px solid transparent;
+      border-top: 12px solid #ffffff;
+      filter: drop-shadow(0 3px 2px rgba(0,0,0,0.06));
+      z-index: 10;
+    }
+
+    @keyframes cardShake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+    .animate-shake {
+      animation: cardShake 0.4s ease-in-out;
+    }
+
+    @media print {
+      body { background: white !important; padding: 0 !important; }
+      .no-print { display: none !important; }
+      .worksheet-frame { box-shadow: none !important; border: none !important; padding: 0 !important; margin: 0 !important; max-width: 100% !important; }
+    }
+  </style>
+</head>
+<body class="p-2 sm:p-5 lg:p-7 antialiased flex flex-col items-center">
+
+  <!-- TOP TOOLBAR & QUICK CONTROLS -->
+  <header class="no-print w-full max-w-5xl bg-white/95 backdrop-blur-md rounded-2xl p-3.5 sm:p-4 mb-5 shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 via-orange-500 to-rose-500 text-white flex items-center justify-center text-2xl font-black shadow-md shrink-0">
+        📅
+      </div>
+      <div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <h1 class="font-extrabold text-slate-900 text-base sm:text-lg">ورقة عمل: شهور السنة (Months of the Year)</h1>
+          <span class="text-xs font-black bg-sky-100 text-sky-800 px-2.5 py-0.5 rounded-full border border-sky-200 flex items-center gap-1 font-english">
+            <span>🇨🇦</span> Canadian Accent
+          </span>
+          <span class="text-xs font-black bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
+            <span>🌟</span> تفاعلي متكامل
+          </span>
+        </div>
+        <p class="text-xs text-slate-500 font-semibold mt-0.5">تزامن صوتي كامل، سحب وإفلات، تمرين استماع، ولعبة محادثة بشخصيتين</p>
+      </div>
+    </div>
+
+    <!-- Toolbar Buttons -->
+    <div class="flex items-center flex-wrap gap-2">
+      <!-- Live Score Badge -->
+      <div class="px-3.5 py-2 bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 rounded-xl text-xs font-black text-amber-900 flex items-center gap-1.5 shadow-xs">
+        <span>⭐</span>
+        <span id="globalScoreBadge">النقاط: 0 / 12</span>
+      </div>
+
+      <!-- Voice Test Button -->
+      <button onclick="testCanadianVoice()" class="px-3 py-2 bg-sky-50 hover:bg-sky-100 text-sky-800 border border-sky-200 rounded-xl text-xs font-black transition flex items-center gap-1.5 active:scale-95">
+        <span>🇨🇦</span>
+        <span>صوت كندي 🎙️</span>
+      </button>
+
+      <!-- Toggle Arabic Translation -->
+      <button onclick="toggleArabicTranslations()" id="transToggleBtn" class="px-3 py-2 bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 rounded-xl text-xs font-black transition flex items-center gap-1 active:scale-95">
+        <span>🌐</span>
+        <span id="transToggleLabel">الترجمة: مفعّلة</span>
+      </button>
+
+      <!-- Speed Toggle -->
+      <button onclick="toggleSpeechRate()" id="speedToggleBtn" class="px-3 py-2 bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 rounded-xl text-xs font-black transition flex items-center gap-1 active:scale-95">
+        <span>⚡</span>
+        <span id="speedToggleLabel">سرعة: عادية</span>
+      </button>
+
+      <!-- Reset -->
+      <button onclick="resetAllWorksheet()" class="px-3 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-xl text-xs font-black transition flex items-center gap-1 active:scale-95">
+        <span>🔄</span>
+        <span>إعادة تعيين</span>
+      </button>
+
+      <!-- Print -->
+      <button onclick="window.print()" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition" title="طباعة">
+        🖨️
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSHEET CANVAS (MATCHING POSTER DESIGN) -->
+  <main id="worksheetMain" class="w-full max-w-5xl worksheet-frame p-4 sm:p-8 lg:p-10 border-4 border-amber-200/70 relative overflow-hidden transition-all">
+
+    <!-- Top Corner Doodles (Notebook & Pencils) -->
+    <div class="absolute -top-3 -right-3 text-3xl opacity-20 select-none pointer-events-none">✏️ 📐 ⭐</div>
+    <div class="absolute -bottom-3 -left-3 text-3xl opacity-20 select-none pointer-events-none">🎨 ⏰ 📚</div>
+
+    <!-- WORKSHEET HEADER: NAME, DATE & GLORY ENGLISH ACADEMY EMBLEM -->
+    <div class="flex items-center justify-between pb-4 mb-6 border-b-2 border-slate-100 flex-wrap gap-4" dir="ltr">
+      
+      <!-- Student Name and Date Form Inputs -->
+      <div class="flex items-center gap-4 sm:gap-6 flex-wrap font-english">
+        <div class="flex items-center gap-2">
+          <label class="text-base sm:text-lg font-black text-slate-800 tracking-wide">Name:</label>
+          <input type="text" placeholder="Write your name..." class="px-3 py-1 rounded-xl border-b-2 border-slate-400 focus:border-amber-500 bg-amber-50/30 text-slate-800 font-bold text-sm outline-none transition w-44 sm:w-56">
+        </div>
+        <div class="flex items-center gap-2">
+          <label class="text-base sm:text-lg font-black text-slate-800 tracking-wide">Date:</label>
+          <input type="text" placeholder="DD/MM/YYYY" class="px-3 py-1 rounded-xl border-b-2 border-slate-400 focus:border-amber-500 bg-amber-50/30 text-slate-800 font-bold text-sm outline-none transition w-32 sm:w-36">
+        </div>
+      </div>
+
+      <!-- Glory English Academy Emblem -->
+      <div class="flex items-center gap-2.5" dir="rtl">
+        <div class="w-14 h-14 rounded-full border-2 border-teal-600 bg-white p-1 shadow-sm flex items-center justify-center relative overflow-hidden shrink-0">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <circle cx="50" cy="50" r="46" fill="#f0fdf4" stroke="#0d9488" stroke-width="3"/>
+            <!-- Open Book Icon -->
+            <path d="M50 68 Q35 58 20 62 L20 38 Q35 34 50 44 Q65 34 80 38 L80 62 Q65 58 50 68 Z" fill="#0d9488"/>
+            <path d="M50 44 L50 68" stroke="#ffffff" stroke-width="2.5"/>
+            <!-- Flying Bird / Wings -->
+            <path d="M40 32 Q50 24 60 32 Q55 20 40 32 Z" fill="#38bdf8"/>
+            <!-- Arc Text Accent -->
+            <path d="M22 25 Q50 12 78 25" fill="none" stroke="#0f766e" stroke-width="2" stroke-dasharray="2 2"/>
+          </svg>
+        </div>
+        <div class="text-right">
+          <div class="font-black text-teal-800 text-xs sm:text-sm uppercase tracking-wider font-english">Glory English Academy</div>
+          <div class="text-[10px] sm:text-xs font-bold text-slate-500">أكاديمية جلوري للغة الإنجليزية</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         SECTION 1: MONTHS OF THE YEAR (شهور السنة) - INTERACTIVE POSTER
+         ========================================================================= -->
+    <section class="mb-10" id="sectionMonthsPoster">
+      
+      <!-- Big Playful Poster Title -->
+      <div class="text-center mb-6 relative">
+        <div class="inline-flex items-center gap-3 bg-gradient-to-r from-amber-100/70 via-orange-100/70 to-rose-100/70 px-6 py-2.5 rounded-full border-2 border-amber-300/80 shadow-xs">
+          <span class="text-2xl animate-bounce">🎊</span>
+          <div>
+            <h2 class="text-2xl sm:text-4xl font-black font-english tracking-wide bg-gradient-to-r from-cyan-600 via-amber-500 to-rose-500 bg-clip-text text-transparent flex items-center gap-2 justify-center" dir="ltr">
+              <span>MONTHS OF THE YEAR</span>
+            </h2>
+            <div class="text-lg sm:text-2xl font-black text-amber-900 flex items-center justify-center gap-2 mt-0.5">
+              <span>⭐</span>
+              <span>شهور السنة</span>
+              <span>⭐</span>
+            </div>
+          </div>
+          <span class="text-2xl animate-bounce">📅</span>
+        </div>
+
+        <!-- Play All Months In Order Button -->
+        <div class="mt-3 flex items-center justify-center gap-2">
+          <button onclick="playAllMonthsSequentially()" id="playAllMonthsBtn" class="px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-xl text-xs sm:text-sm font-black shadow-md transition active:scale-95 flex items-center gap-2">
+            <span id="playAllIcon">▶️</span>
+            <span id="playAllLabel">قراءة جميع الشهور بالترتيب (1 - 12)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 12 Months Columns Layout (Matching poster: Left Col Jan-Jun, Right Col Jul-Dec) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6" dir="ltr">
+        
+        <!-- LEFT COLUMN: January - June -->
+        <div class="space-y-3">
+          
+          <!-- 1. January -->
+          <div onclick="playMonthCard(1, 'January', 'يناير')" id="month-card-1" class="month-card flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-amber-50/70 hover:bg-amber-100/80 border-2 border-amber-200/90 shadow-xs cursor-pointer transition-all group">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl group-hover:scale-125 transition-transform">☃️</span>
+              <div>
+                <span class="text-xl sm:text-2xl font-black font-english text-sky-800 block">January</span>
+                <span class="text-xs font-bold text-slate-500 font-mono">Month 1</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-lg sm:text-xl font-black text-slate-800 arabic-trans-box font-sans" dir="rtl">يناير</span>
+              <span class="text-2xl">🧢</span>
+              <button class="w-8 h-8 rounded-full bg-white text-sky-700 shadow-xs flex items-center justify-center text-xs group-hover:bg-sky-600 group-hover:text-white transition">🔊</button>
+            </div>
+          </div>
+
+          <!-- 2. February -->
+          <div onclick="playMonthCard(2, 'February', 'فبراير')" id="month-card-2" class="month-card flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-rose-50/70 hover:bg-rose-100/80 border-2 border-rose-200/90 shadow-xs cursor-pointer transition-all group">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl group-hover:scale-125 transition-transform">❤️</span>
+              <div>
+                <span class="text-xl sm:text-2xl font-black font-english text-rose-700 block">February</span>
+                <span class="text-xs font-bold text-slate-500 font-mono">Month 2</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-lg sm:text-xl font-black text-slate-800 arabic-trans-box font-sans" dir="rtl">فبراير</span>
+              <span class="text-2xl">🎁</span>
+              <button class="w-8 h-8 rounded-full bg-white text-rose-700 shadow-xs flex items-center justify-center text-xs group-hover:bg-rose-600 group-hover:text-white transition">🔊</button>
+            </div>
+          </div>
+
+          <!-- 3. March -->
+          <div onclick="playMonthCard(3, 'March', 'مارس')" id="month-card-3" class="month-card flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-emerald-50/70 hover:bg-emerald-100/80 border-2 border-emerald-200/90 shadow-xs cursor-pointer transition-all group">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl group-hover:scale-125 transition-transform">🌸</span>
+              <div>
+                <span class="text-xl sm:text-2xl font-black font-english text-emerald-800 block">March</span>
+                <span class="text-xs font-bold text-slate-500 font-mono">Month 3</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-lg sm:text-xl font-black text-slate-800 arabic-trans-box font-sans" dir="rtl">مارس</span>
+              <button class="w-8 h-8 rounded-full bg-white text-emerald-700 shadow-xs flex items-center justify-center text-xs group-hover:bg-emerald-600 group-hover:text-white transition">🔊</button>
+            </div>
+          </div>
+
+          <!-- 4. April -->
+          <div onclick="playMonthCard(4, 'April', 'ابريل')" id="month-card-4" class="month-card flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-sky-50/70 hover:bg-sky-100/80 border-2 border-sky-200/90 shadow-xs cursor-pointer transition-all group">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl group-hover:scale-125 transition-transform">☂️</span>
+              <div>
+                <span class="text-xl sm:text-2xl font-black font-english text-sky-800 block">April</span>
+                <span class="text-xs font-bold text-slate-500 font-mono">Month 4</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-lg sm:text-xl font-black text-slate-800 arabic-trans-box font-sans" dir="rtl">ابريل</span>
+              <span class="text-2xl">🌧️</span>
+              <button class="w-8 h-8 rounded-full bg-white text-sky-700 shadow-xs flex items-center justify-center text-xs group-hover:bg-sky-600 group-hover:text-white transition">🔊</button>
+            </div>
+          </div>
+
+          <!-- 5. May -->
+          <div onclick="playMonthCard(5, 'May', 'مايو')" id="month-card-5" class="month-card flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-amber-50/70 hover:bg-amber-100/80 border-2 border-amber-200/90 shadow-xs cursor-pointer transition-all group">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl group-hover:scale-125 transition-transform">☀️</span>
+              <div>
+                <span class="text-xl sm:text-2xl font-black font-english text-amber-800 block">May</span>
+                <span class="text-xs font-bold text-slate-500 font-mono">Month 5</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-lg sm:text-xl font-black text-slate-800 arabic-trans-box font-sans" dir="rtl">مايو</span>
+              <span class="text-2xl">🌱</span>
+              <button class="w-8 h-8 rounded-full bg-white text-amber-700 shadow-xs flex items-center justify-center text-xs group-hover:bg-amber-600 group-hover:text-white transition">🔊</button>
+            </div>
+          </div>
+
+          <!-- 6. June -->
+          <div onclick="playMonthCard(6, 'June', 'يونيو')" id="month-card-6" class="month-card flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-purple-50/70 hover:bg-purple-100/80 border-2 border-purple-200/90 shadow-xs cursor-pointer transition-all group">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl group-hover:scale-125 transition-transform">🦋</span>
+              <div>
+                <span class="text-xl sm:text-2xl font-black font-english text-purple-800 block">June</span>
+                <span class="text-xs font-bold text-slate-500 font-mono">Month 6</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-lg sm:text-xl font-black text-slate-800 arabic-trans-box font-sans" dir="rtl">يونيو</span>
+              <button class="w-8 h-8 rounded-full bg-white text-purple-700 shadow-xs flex items-center justify-center text-xs group-hover:bg-purple-600 group-hover:text-white transition">🔊</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: July - December -->
+        <div class="space-y-3">
+          
+          <!-- 7. July -->
+          <div onclick="playMonthCard(7, 'July', 'يوليو')" id="month-card-7" class="month-card flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-cyan-50/70 hover:bg-cyan-100/80 border-2 border-cyan-200/90 shadow-xs cursor-pointer transition-all group">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl group-hover:scale-125 transition-transform">🏖️</span>
+              <div>
+                <span class="text-xl sm:text-2xl font-black font-english text-cyan-800 block">July</span>
+                <span class="text-xs font-bold text-slate-500 font-mono">Month 7</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-lg sm:text-xl font-black text-slate-800 arabic-trans-box font-sans" dir="rtl">يوليو</span>
+              <button class="w-8 h-8 rounded-full bg-white text-cyan-700 shadow-xs flex items-center justify-center text-xs group-hover:bg-cyan-600 group-hover:text-white transition">🔊</button>
+            </div>
+          </div>
+
+          <!-- 8. August -->
+          <div onclick="playMonthCard(8, 'August', 'أغسطس')" id="month-card-8" class="month-card flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-orange-50/70 hover:bg-orange-100/80 border-2 border-orange-200/90 shadow-xs cursor-pointer transition-all group">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl group-hover:scale-125 transition-transform">🍦</span>
+              <div>
+                <span class="text-xl sm:text-2xl font-black font-english text-orange-800 block">August</span>
+                <span class="text-xs font-bold text-slate-500 font-mono">Month 8</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-lg sm:text-xl font-black text-slate-800 arabic-trans-box font-sans" dir="rtl">أغسطس</span>
+              <button class="w-8 h-8 rounded-full bg-white text-orange-700 shadow-xs flex items-center justify-center text-xs group-hover:bg-orange-600 group-hover:text-white transition">🔊</button>
+            </div>
+          </div>
+
+          <!-- 9. September -->
+          <div onclick="playMonthCard(9, 'September', 'سبتمبر')" id="month-card-9" class="month-card flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-emerald-50/70 hover:bg-emerald-100/80 border-2 border-emerald-300 shadow-xs cursor-pointer transition-all group">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl group-hover:scale-125 transition-transform">🇸🇦</span>
+              <div>
+                <span class="text-xl sm:text-2xl font-black font-english text-emerald-800 block">September</span>
+                <span class="text-xs font-bold text-slate-500 font-mono">Month 9</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-lg sm:text-xl font-black text-slate-800 arabic-trans-box font-sans" dir="rtl">سبتمبر</span>
+              <button class="w-8 h-8 rounded-full bg-white text-emerald-700 shadow-xs flex items-center justify-center text-xs group-hover:bg-emerald-600 group-hover:text-white transition">🔊</button>
+            </div>
+          </div>
+
+          <!-- 10. October -->
+          <div onclick="playMonthCard(10, 'October', 'أكتوبر')" id="month-card-10" class="month-card flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-amber-50/70 hover:bg-amber-100/80 border-2 border-amber-300 shadow-xs cursor-pointer transition-all group">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl group-hover:scale-125 transition-transform">🍁</span>
+              <div>
+                <span class="text-xl sm:text-2xl font-black font-english text-amber-900 block">October</span>
+                <span class="text-xs font-bold text-slate-500 font-mono">Month 10</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-lg sm:text-xl font-black text-slate-800 arabic-trans-box font-sans" dir="rtl">أكتوبر</span>
+              <button class="w-8 h-8 rounded-full bg-white text-amber-800 shadow-xs flex items-center justify-center text-xs group-hover:bg-amber-700 group-hover:text-white transition">🔊</button>
+            </div>
+          </div>
+
+          <!-- 11. November -->
+          <div onclick="playMonthCard(11, 'November', 'نوفمبر')" id="month-card-11" class="month-card flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-stone-50/70 hover:bg-stone-100/80 border-2 border-stone-200/90 shadow-xs cursor-pointer transition-all group">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl group-hover:scale-125 transition-transform">🧥</span>
+              <div>
+                <span class="text-xl sm:text-2xl font-black font-english text-stone-800 block">November</span>
+                <span class="text-xs font-bold text-slate-500 font-mono">Month 11</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-lg sm:text-xl font-black text-slate-800 arabic-trans-box font-sans" dir="rtl">نوفمبر</span>
+              <button class="w-8 h-8 rounded-full bg-white text-stone-700 shadow-xs flex items-center justify-center text-xs group-hover:bg-stone-600 group-hover:text-white transition">🔊</button>
+            </div>
+          </div>
+
+          <!-- 12. December -->
+          <div onclick="playMonthCard(12, 'December', 'ديسمبر')" id="month-card-12" class="month-card flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-indigo-50/70 hover:bg-indigo-100/80 border-2 border-indigo-200/90 shadow-xs cursor-pointer transition-all group">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl group-hover:scale-125 transition-transform">🧣</span>
+              <div>
+                <span class="text-xl sm:text-2xl font-black font-english text-indigo-800 block">December</span>
+                <span class="text-xs font-bold text-slate-500 font-mono">Month 12</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-lg sm:text-xl font-black text-slate-800 arabic-trans-box font-sans" dir="rtl">ديسمبر</span>
+              <button class="w-8 h-8 rounded-full bg-white text-indigo-700 shadow-xs flex items-center justify-center text-xs group-hover:bg-indigo-600 group-hover:text-white transition">🔊</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================================================================
+         SECTION 2: CONVERSATION (المحادثة) - DRAG & DROP COMPLETION
+         ========================================================================= -->
+    <section class="mb-10 pb-8 border-b-2 border-slate-100" id="sectionConversation">
+      
+      <!-- Conversation Banner Header (Matching Orange Pill in Poster) -->
+      <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+        <div class="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2 rounded-2xl shadow-sm">
+          <span class="text-lg">💬</span>
+          <h3 class="font-english text-lg sm:text-xl font-black tracking-wide" dir="ltr">CONVERSATION</h3>
+          <span class="text-lg sm:text-xl font-black mr-1 font-sans">المحادثة</span>
+        </div>
+
+        <div class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1.5 rounded-xl border border-amber-200 flex items-center gap-1.5">
+          <span>🖐️</span>
+          <span>اسحب الشهر المناسب أو انقر عليه لتعبئة الفراغ</span>
+        </div>
+      </div>
+
+      <!-- Word Bank (صندوق الكلمات للشهور) -->
+      <div class="p-4 rounded-2xl bg-slate-50 border-2 border-slate-200 mb-6" dir="ltr">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-black text-slate-700 font-english uppercase tracking-wider flex items-center gap-1.5">
+            <span>🏷️</span> Months Word Bank (صندوق الشهور للسحب والإفلات):
+          </span>
+          <span class="text-[11px] font-bold text-slate-500" dir="rtl">
+            انقر على الشهر ثم انقر على الفراغ لوضعه
+          </span>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 font-english" id="wordBankMonths">
+          <!-- Dynamically populated chips -->
+        </div>
+      </div>
+
+      <!-- 4 Conversation Dialogues Matching Poster -->
+      <div class="space-y-4" dir="ltr">
+
+        <!-- 1. Birthday Dialogue (Blue Border / Cake Icon) -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-white border-2 border-sky-400 shadow-xs relative transition-all" id="dialogue-card-1">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl shrink-0">🎂</span>
+              <div>
+                <!-- Question -->
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="font-black text-slate-800 text-base sm:text-lg font-english" id="d-q1">
+                    Which month is your birthday in?
+                  </p>
+                  <button onclick="speechEngine.speak('Which month is your birthday in?')" class="w-7 h-7 rounded-lg bg-sky-100 hover:bg-sky-200 text-sky-800 flex items-center justify-center text-xs transition">🔊</button>
+                </div>
+                <div class="text-xs font-bold text-sky-800 arabic-trans-box mt-0.5" dir="rtl">
+                  في أي شهر يكون يوم مولدك؟
+                </div>
+
+                <!-- Answer with Drop Slot -->
+                <div class="mt-3 flex items-center gap-2 flex-wrap font-english">
+                  <span class="font-black text-slate-800 text-base sm:text-lg">My birthday is in</span>
+                  <!-- Drop Slot 1 -->
+                  <div class="drop-slot inline-flex items-center justify-center px-4 py-1.5 bg-sky-50 border-2 border-dashed border-sky-400 rounded-xl text-sky-950 font-black text-base shadow-xs min-h-[38px] cursor-pointer" data-slot="birthday" onclick="handleSlotClick('birthday')" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'birthday')">
+                    <span class="slot-text text-slate-400 text-xs">.......... [اختر شهراً]</span>
+                  </div>
+                  <span class="font-black text-slate-800 text-base sm:text-lg">.</span>
+                  <button onclick="speakDialogueAnswer(1)" class="w-7 h-7 rounded-lg bg-sky-100 hover:bg-sky-200 text-sky-800 flex items-center justify-center text-xs transition">🔊</button>
+                </div>
+                <div class="text-xs font-bold text-slate-500 arabic-trans-box mt-1" dir="rtl">
+                  يوم مولدي يكون في شهر <span id="arBirthdayHint" class="text-sky-700 font-bold">.......</span>
+                </div>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 bg-sky-100 text-sky-800 rounded-lg text-xs font-black font-english">Q1</span>
+          </div>
+        </div>
+
+        <!-- 2. Hottest Month Dialogue (Orange Border / Sun Icon) -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-white border-2 border-amber-400 shadow-xs relative transition-all" id="dialogue-card-2">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl shrink-0">☀️</span>
+              <div>
+                <!-- Question -->
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="font-black text-slate-800 text-base sm:text-lg font-english" id="d-q2">
+                    What is the hottest month in your country?
+                  </p>
+                  <button onclick="speechEngine.speak('What is the hottest month in your country?')" class="w-7 h-7 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-800 flex items-center justify-center text-xs transition">🔊</button>
+                </div>
+                <div class="text-xs font-bold text-amber-800 arabic-trans-box mt-0.5" dir="rtl">
+                  ما هو الشهر الأكثر حرارة في بلدك؟
+                </div>
+
+                <!-- Answer (August is the hottest month) -->
+                <div class="mt-3 flex items-center gap-2 flex-wrap font-english">
+                  <span class="font-black text-amber-900 text-base sm:text-lg px-3 py-1 bg-amber-100/70 border border-amber-300 rounded-xl">
+                    August is the hottest month in my country.
+                  </span>
+                  <button onclick="speechEngine.speak('August is the hottest month in my country.')" class="w-7 h-7 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-800 flex items-center justify-center text-xs transition">🔊</button>
+                </div>
+                <div class="text-xs font-bold text-amber-800 arabic-trans-box mt-1" dir="rtl">
+                  شهر أغسطس هو الشهر الأكثر حرارة في بلدي.
+                </div>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 bg-amber-100 text-amber-800 rounded-lg text-xs font-black font-english">Q2</span>
+          </div>
+        </div>
+
+        <!-- 3. Favorite Month Dialogue (Rose Border / Heart Icon) -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-white border-2 border-rose-400 shadow-xs relative transition-all" id="dialogue-card-3">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl shrink-0">❤️</span>
+              <div>
+                <!-- Question -->
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="font-black text-slate-800 text-base sm:text-lg font-english" id="d-q3">
+                    Which is your favorite month?
+                  </p>
+                  <button onclick="speechEngine.speak('Which is your favorite month?')" class="w-7 h-7 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-800 flex items-center justify-center text-xs transition">🔊</button>
+                </div>
+                <div class="text-xs font-bold text-rose-800 arabic-trans-box mt-0.5" dir="rtl">
+                  ما هو شهرك المفضل؟
+                </div>
+
+                <!-- Answer with Drop Slot -->
+                <div class="mt-3 flex items-center gap-2 flex-wrap font-english">
+                  <span class="font-black text-slate-800 text-base sm:text-lg">My favorite month is</span>
+                  <!-- Drop Slot 2 -->
+                  <div class="drop-slot inline-flex items-center justify-center px-4 py-1.5 bg-rose-50 border-2 border-dashed border-rose-400 rounded-xl text-rose-950 font-black text-base shadow-xs min-h-[38px] cursor-pointer" data-slot="favorite" onclick="handleSlotClick('favorite')" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'favorite')">
+                    <span class="slot-text text-slate-400 text-xs">.......... [اختر شهراً]</span>
+                  </div>
+                  <span class="font-black text-slate-800 text-base sm:text-lg">.</span>
+                  <button onclick="speakDialogueAnswer(3)" class="w-7 h-7 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-800 flex items-center justify-center text-xs transition">🔊</button>
+                </div>
+                <div class="text-xs font-bold text-slate-500 arabic-trans-box mt-1" dir="rtl">
+                  شهري المفضل هو <span id="arFavoriteHint" class="text-rose-700 font-bold">.......</span>
+                </div>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 bg-rose-100 text-rose-800 rounded-lg text-xs font-black font-english">Q3</span>
+          </div>
+        </div>
+
+        <!-- 4. National Holidays Dialogue (Green Border / Saudi Flag & Balloons) -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-white border-2 border-emerald-500 shadow-xs relative transition-all" id="dialogue-card-4">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="flex flex-col items-center gap-1 shrink-0">
+                <span class="text-2xl">🎈</span>
+                <span class="text-2xl">🇸🇦</span>
+              </div>
+              <div>
+                <!-- Question -->
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="font-black text-slate-800 text-base sm:text-lg font-english" id="d-q4">
+                    Which month has national holidays in your country?
+                  </p>
+                  <button onclick="speechEngine.speak('Which month has national holidays in your country?')" class="w-7 h-7 rounded-lg bg-emerald-100 hover:bg-emerald-200 text-emerald-800 flex items-center justify-center text-xs transition">🔊</button>
+                </div>
+                <div class="text-xs font-bold text-emerald-800 arabic-trans-box mt-0.5" dir="rtl">
+                  أي الشهور به إجازات وطنية في بلدك؟
+                </div>
+
+                <!-- Answer (September has our National Day on the 23rd) -->
+                <div class="mt-3 flex items-center gap-2 flex-wrap font-english">
+                  <span class="font-black text-emerald-900 text-base sm:text-lg px-3 py-1 bg-emerald-100/70 border border-emerald-300 rounded-xl">
+                    September has our National Day on the 23rd.
+                  </span>
+                  <button onclick="speechEngine.speak('September has our National Day on the twenty-third.')" class="w-7 h-7 rounded-lg bg-emerald-100 hover:bg-emerald-200 text-emerald-800 flex items-center justify-center text-xs transition">🔊</button>
+                </div>
+                <div class="text-xs font-bold text-emerald-800 arabic-trans-box mt-1" dir="rtl">
+                  ٢٣ سبتمبر هو اليوم الوطني.
+                </div>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-lg text-xs font-black font-english">Q4</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================================================================
+         SECTION 3: LISTENING CHALLENGE (تمرين الاستماع الذكي)
+         ========================================================================= -->
+    <section class="mb-10 pb-8 border-b-2 border-slate-100" id="sectionListeningQuiz">
+      
+      <div class="flex items-center justify-between pb-3 mb-4 flex-wrap gap-2">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-full bg-teal-600 text-white font-english font-black flex items-center justify-center text-base shadow-sm shrink-0">
+            🎧
+          </div>
+          <div>
+            <h3 class="font-english text-lg sm:text-xl font-black text-slate-900" dir="ltr">
+              Listening Quiz: Guess the Month!
+            </h3>
+            <p class="text-xs text-slate-500 font-bold">استمع لنطق الشهر باللكنة الكندية ثم اختر البطاقة المطابقة</p>
+          </div>
+        </div>
+
+        <!-- Listening Score -->
+        <div class="text-xs font-black bg-teal-50 text-teal-800 border border-teal-200 px-3 py-1 rounded-xl">
+          الدرجة: <span id="listenScoreVal">0</span> / 5
+        </div>
+      </div>
+
+      <!-- Quiz Interactive Card -->
+      <div class="p-6 rounded-3xl bg-gradient-to-r from-teal-50/60 via-sky-50/60 to-indigo-50/60 border-2 border-teal-200 flex flex-col items-center text-center">
+        
+        <button onclick="playQuizPromptAudio()" id="quizPlayPromptBtn" class="px-6 py-3.5 bg-teal-600 hover:bg-teal-700 text-white rounded-2xl font-black text-sm sm:text-base shadow-md transition active:scale-95 flex items-center gap-2">
+          <span>🔊</span>
+          <span>انقر للاستماع إلى الشهر المستهدف (Listen)</span>
+        </button>
+
+        <p class="text-xs font-bold text-slate-500 mt-2 mb-5">
+          هل سمعت الشهر جيداً؟ انقر على الشهر الصحيح من الخيارات أدناه:
+        </p>
+
+        <!-- 4 Multiple Choice Month Options -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-2xl font-english" id="quizOptionsGrid" dir="ltr">
+          <!-- Dynamically populated buttons -->
+        </div>
+
+        <div id="quizFeedbackBox" class="mt-4 text-xs font-black hidden px-4 py-2 rounded-xl"></div>
+      </div>
+
+    </section>
+
+    <!-- =========================================================================
+         SECTION 4: TWO-CHARACTER INTERACTIVE ROLE-PLAY GAME
+         ========================================================================= -->
+    <section class="mb-8" id="sectionRoleplay">
+      
+      <div class="flex items-center justify-between pb-3 mb-4 flex-wrap gap-2">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-full bg-indigo-600 text-white font-english font-black flex items-center justify-center text-base shadow-sm shrink-0">
+            🎭
+          </div>
+          <div>
+            <h3 class="font-english text-lg sm:text-xl font-black text-slate-900" dir="ltr">
+              Two-Character Role-Play Game
+            </h3>
+            <p class="text-xs text-slate-500 font-bold">لعبة لعب الأدوار بشخصيتين: واحدة تسأل والأخرى تجيب مع تزامن الصوت بالكلمات</p>
+          </div>
+        </div>
+
+        <!-- Question selector pill bar -->
+        <div class="flex items-center gap-1.5 font-english flex-wrap text-xs" dir="ltr">
+          <button onclick="switchRoleplayQuestion(1)" id="rpTab-1" class="px-3 py-1.5 rounded-xl border-2 border-indigo-600 bg-indigo-600 text-white font-black transition">Q1: Birthday 🎂</button>
+          <button onclick="switchRoleplayQuestion(2)" id="rpTab-2" class="px-3 py-1.5 rounded-xl border-2 border-slate-200 bg-white text-slate-700 font-black hover:border-indigo-300 transition">Q2: Hottest ☀️</button>
+          <button onclick="switchRoleplayQuestion(3)" id="rpTab-3" class="px-3 py-1.5 rounded-xl border-2 border-slate-200 bg-white text-slate-700 font-black hover:border-indigo-300 transition">Q3: Favorite ❤️</button>
+          <button onclick="switchRoleplayQuestion(4)" id="rpTab-4" class="px-3 py-1.5 rounded-xl border-2 border-slate-200 bg-white text-slate-700 font-black hover:border-indigo-300 transition">Q4: Holidays 🇸🇦</button>
+        </div>
+      </div>
+
+      <!-- Interactive Stage with 2 Schoolgirls (Matching Poster Footer Avatars) -->
+      <div class="p-5 sm:p-7 rounded-3xl bg-gradient-to-b from-slate-50 to-white border-2 border-indigo-200 shadow-sm" dir="ltr">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          
+          <!-- Student 1: Noura (Left - Asking Question) -->
+          <div class="flex flex-col items-center text-center p-4 rounded-3xl bg-emerald-50/40 border-2 border-emerald-200" id="rpCard1">
+            <div class="w-full flex items-center justify-between mb-3">
+              <span class="px-3 py-1 rounded-full bg-emerald-600 text-white font-english font-black text-xs flex items-center gap-1 shadow-2xs">
+                <span>👧</span>
+                <span>Noura (تسأل)</span>
+              </span>
+              <button onclick="speakRoleplaySpeaker(1)" class="px-3 py-1 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 rounded-xl text-xs font-black transition flex items-center gap-1 active:scale-95">
+                <span>🔊</span>
+                <span>اسأل</span>
+              </button>
+            </div>
+
+            <!-- Comic Speech Bubble 1 -->
+            <div onclick="speakRoleplaySpeaker(1)" id="rpBubble1" class="w-full min-h-[135px] flex flex-col justify-center items-center text-center cursor-pointer p-4 sm:p-5 rounded-[26px] bg-white border border-emerald-200 shadow-sm mb-4 relative modern-bubble-char font-english group">
+              <p id="rpChar1Text" class="text-sm sm:text-base font-black text-slate-800 leading-relaxed text-center w-full max-w-sm mx-auto">
+                "Which month is your birthday in?"
+              </p>
+              <div class="mt-2 inline-flex items-center justify-center">
+                <span id="rpChar1Ar" class="text-[11px] sm:text-xs font-bold text-emerald-800 arabic-trans-box bg-emerald-100/70 px-3 py-0.5 rounded-full border border-emerald-200/60" dir="rtl">
+                  "في أي شهر يكون يوم مولدك؟"
+                </span>
+              </div>
+            </div>
+
+            <!-- Noura Character SVG (Schoolgirl at desk) -->
+            <div id="rpChar1Avatar" class="w-28 h-32 sm:w-36 sm:h-40 transition-all duration-300">
+              <svg viewBox="0 0 120 140" class="w-full h-full drop-shadow">
+                <!-- Hair -->
+                <ellipse cx="60" cy="55" rx="36" ry="44" fill="#581c87"/>
+                <circle cx="34" cy="65" r="12" fill="#581c87"/>
+                <circle cx="86" cy="65" r="12" fill="#581c87"/>
+                <!-- Face & Neck -->
+                <rect x="52" y="85" width="16" height="18" fill="#fed7aa"/>
+                <ellipse cx="60" cy="62" rx="25" ry="29" fill="#fed7aa"/>
+                <!-- Party Hat / Hair accessory -->
+                <polygon points="60,18 50,38 70,38" fill="#38bdf8"/>
+                <circle cx="60" cy="18" r="4" fill="#facc15"/>
+                <!-- Eyes & Cheeks -->
+                <ellipse cx="50" cy="60" rx="4" ry="5" fill="#1e293b"/>
+                <ellipse cx="70" cy="60" rx="4" ry="5" fill="#1e293b"/>
+                <circle cx="52" cy="58" r="1.5" fill="#ffffff"/>
+                <circle cx="72" cy="58" r="1.5" fill="#ffffff"/>
+                <circle cx="43" cy="67" r="4" fill="#f43f5e" opacity="0.4"/>
+                <circle cx="77" cy="67" r="4" fill="#f43f5e" opacity="0.4"/>
+                <path d="M52 74 Q60 82 68 74" stroke="#9a3412" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <!-- Desk & Clothes (Green School Uniform) -->
+                <path d="M25 105 Q60 98 95 105 L105 140 L15 140 Z" fill="#059669"/>
+                <!-- Notebook on Desk -->
+                <rect x="35" y="115" width="50" height="25" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+                <line x1="45" y1="122" x2="75" y2="122" stroke="#cbd5e1" stroke-width="2"/>
+                <line x1="45" y1="128" x2="68" y2="128" stroke="#cbd5e1" stroke-width="2"/>
+              </svg>
+            </div>
+            <span class="text-xs font-bold text-slate-500 mt-1 font-english">Tap to Ask (انقر لطرح السؤال)</span>
+          </div>
+
+          <!-- Student 2: Sarah (Right - Answering Question) -->
+          <div class="flex flex-col items-center text-center p-4 rounded-3xl bg-rose-50/40 border-2 border-rose-200" id="rpCard2">
+            <div class="w-full flex items-center justify-between mb-3">
+              <span class="px-3 py-1 rounded-full bg-rose-600 text-white font-english font-black text-xs flex items-center gap-1 shadow-2xs">
+                <span>👧</span>
+                <span>Sarah (تجيب)</span>
+              </span>
+              <button onclick="speakRoleplaySpeaker(2)" class="px-3 py-1 bg-rose-100 hover:bg-rose-200 text-rose-800 rounded-xl text-xs font-black transition flex items-center gap-1 active:scale-95">
+                <span>🔊</span>
+                <span>أجب</span>
+              </button>
+            </div>
+
+            <!-- Comic Speech Bubble 2 -->
+            <div onclick="speakRoleplaySpeaker(2)" id="rpBubble2" class="w-full min-h-[135px] flex flex-col justify-center items-center text-center cursor-pointer p-4 sm:p-5 rounded-[26px] bg-white border border-rose-200 shadow-sm mb-4 relative modern-bubble-char font-english group">
+              <p id="rpChar2Text" class="text-sm sm:text-base font-black text-slate-800 leading-relaxed text-center w-full max-w-sm mx-auto">
+                "My birthday is in October."
+              </p>
+              <div class="mt-2 inline-flex items-center justify-center">
+                <span id="rpChar2Ar" class="text-[11px] sm:text-xs font-bold text-rose-800 arabic-trans-box bg-rose-100/70 px-3 py-0.5 rounded-full border border-rose-200/60" dir="rtl">
+                  "يوم مولدي يكون في شهر أكتوبر."
+                </span>
+              </div>
+            </div>
+
+            <!-- Sarah Character SVG (Matching girl on right in poster) -->
+            <div id="rpChar2Avatar" class="w-28 h-32 sm:w-36 sm:h-40 transition-all duration-300">
+              <svg viewBox="0 0 120 140" class="w-full h-full drop-shadow">
+                <!-- Hair (Brown curly pigtails) -->
+                <ellipse cx="60" cy="55" rx="38" ry="46" fill="#78350f"/>
+                <circle cx="28" cy="62" r="14" fill="#78350f"/>
+                <circle cx="92" cy="62" r="14" fill="#78350f"/>
+                <!-- Face & Neck -->
+                <rect x="52" y="85" width="16" height="18" fill="#fed7aa"/>
+                <ellipse cx="60" cy="62" rx="25" ry="29" fill="#fed7aa"/>
+                <!-- Eyes & Cheeks -->
+                <ellipse cx="50" cy="60" rx="4" ry="5" fill="#1e293b"/>
+                <ellipse cx="70" cy="60" rx="4" ry="5" fill="#1e293b"/>
+                <circle cx="52" cy="58" r="1.5" fill="#ffffff"/>
+                <circle cx="72" cy="58" r="1.5" fill="#ffffff"/>
+                <circle cx="43" cy="67" r="4" fill="#f43f5e" opacity="0.4"/>
+                <circle cx="77" cy="67" r="4" fill="#f43f5e" opacity="0.4"/>
+                <!-- Happy Smile -->
+                <path d="M50 72 Q60 84 70 72 Z" fill="#ef4444" stroke="#b91c1c" stroke-width="1.5"/>
+                <path d="M52 73 Q60 76 68 73" fill="#ffffff"/>
+                <!-- Clothes (Pink Uniform) -->
+                <path d="M25 105 Q60 98 95 105 L105 140 L15 140 Z" fill="#e11d48"/>
+                <!-- Clock / Saudi Flag on Desk -->
+                <circle cx="85" cy="125" r="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+                <line x1="85" y1="125" x2="85" y2="119" stroke="#0f172a" stroke-width="1.5"/>
+                <line x1="85" y1="125" x2="90" y2="125" stroke="#0f172a" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <span class="text-xs font-bold text-slate-500 mt-1 font-english">Tap to Answer (انقر للإجابة)</span>
+          </div>
+
+        </div>
+
+        <!-- Master Play Full Conversation Button -->
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between flex-wrap gap-3">
+          <button onclick="playFullRoleplaySequence()" id="playSequenceBtn" class="px-5 py-2.5 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:to-pink-700 text-white rounded-xl text-xs sm:text-sm font-black shadow-md transition active:scale-95 flex items-center gap-2">
+            <span>▶️</span>
+            <span>تشغيل المحادثة الثنائية كاملة (سؤال وجواب)</span>
+          </button>
+
+          <div class="text-xs font-bold text-slate-500" dir="rtl">
+            💡 <span class="font-black text-indigo-700">تلميح:</span> يمكنك استبدال شهر الإجابة بسحب أي شهر من الصندوق بالأعلى!
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- WORKSHEET FOOTER -->
+    <div class="flex items-center justify-between pt-6 border-t-2 border-slate-100 text-slate-500 text-xs font-bold" dir="ltr">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🌟</span>
+        <span class="font-english">Glory English Academy - Interactive Worksheet Series</span>
+      </div>
+      <div class="flex items-center gap-2" dir="rtl">
+        <span>تصميم تفاعلي باللكنة الكندية 🇨🇦</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- NOTIFICATION TOAST -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 transform translate-y-28 opacity-0 transition-all duration-300 z-50 bg-slate-900/95 backdrop-blur-md text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-white/20 pointer-events-none" dir="ltr">
+    <span id="toastIcon" class="text-2xl">✨</span>
+    <div>
+      <div id="toastTitle" class="font-english font-extrabold text-sm text-amber-300">Months of the Year</div>
+      <div id="toastMsg" class="font-semibold text-xs text-slate-200">Welcome!</div>
+    </div>
+  </div>
+
+  <script>
+    /* =========================================================================
+       DATA DEFINITIONS
+       ========================================================================= */
+
+    const MONTHS_DATA = [
+      { num: 1, en: "January", ar: "يناير", emoji: "☃️", color: "bg-sky-500" },
+      { num: 2, en: "February", ar: "فبراير", emoji: "❤️", color: "bg-rose-500" },
+      { num: 3, en: "March", ar: "مارس", emoji: "🌸", color: "bg-emerald-500" },
+      { num: 4, en: "April", ar: "ابريل", emoji: "☂️", color: "bg-sky-600" },
+      { num: 5, en: "May", ar: "مايو", emoji: "☀️", color: "bg-amber-500" },
+      { num: 6, en: "June", ar: "يونيو", emoji: "🦋", color: "bg-purple-500" },
+      { num: 7, en: "July", ar: "يوليو", emoji: "🏖️", color: "bg-cyan-500" },
+      { num: 8, en: "August", ar: "أغسطس", emoji: "🍦", color: "bg-orange-500" },
+      { num: 9, en: "September", ar: "سبتمبر", emoji: "🇸🇦", color: "bg-emerald-600" },
+      { num: 10, en: "October", ar: "أكتوبر", emoji: "🍁", color: "bg-amber-600" },
+      { num: 11, en: "November", ar: "نوفمبر", emoji: "🧥", color: "bg-stone-600" },
+      { num: 12, en: "December", ar: "ديسمبر", emoji: "🧣", color: "bg-indigo-600" }
+    ];
+
+    let currentPlacements = {
+      birthday: null,
+      favorite: null
+    };
+    let selectedWord = null;
+
+    // Roleplay state
+    let activeRoleplayQuestionIdx = 1;
+    const ROLEPLAY_DIALOGUES = {
+      1: {
+        qEn: "Which month is your birthday in?",
+        qAr: "في أي شهر يكون يوم مولدك؟",
+        defaultAEn: "My birthday is in October.",
+        defaultAAr: "يوم مولدي يكون في شهر أكتوبر.",
+        slotKey: "birthday"
+      },
+      2: {
+        qEn: "What is the hottest month in your country?",
+        qAr: "ما هو الشهر الأكثر حرارة في بلدك؟",
+        defaultAEn: "August is the hottest month in my country.",
+        defaultAAr: "شهر أغسطس هو الشهر الأكثر حرارة في بلدي.",
+        slotKey: null
+      },
+      3: {
+        qEn: "Which is your favorite month?",
+        qAr: "ما هو شهرك المفضل؟",
+        defaultAEn: "My favorite month is March.",
+        defaultAAr: "شهري المفضل هو شهر مارس.",
+        slotKey: "favorite"
+      },
+      4: {
+        qEn: "Which month has national holidays in your country?",
+        qAr: "أي الشهور به إجازات وطنية في بلدك؟",
+        defaultAEn: "September has our National Day on the 23rd.",
+        defaultAAr: "٢٣ سبتمبر هو اليوم الوطني.",
+        slotKey: null
+      }
+    };
+
+    // Listening Quiz State
+    let quizCurrentTarget = null;
+    let quizScore = 0;
+
+    /* =========================================================================
+       AUDIO SYNTHESIS & SOUND FX
+       ========================================================================= */
+
+    class SoundEffects {
+      constructor() { this.ctx = null; }
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
+      }
+      beep(freq, type = 'sine', duration = 0.12, gainVal = 0.15) {
+        this.init();
+        if (!this.ctx) return;
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + duration);
+        } catch (e) {}
+      }
+      playPop() { this.beep(520, 'sine', 0.08, 0.15); }
+      playSuccess() {
+        this.beep(523.25, 'triangle', 0.12, 0.25);
+        setTimeout(() => this.beep(659.25, 'triangle', 0.14, 0.25), 90);
+        setTimeout(() => this.beep(783.99, 'triangle', 0.2, 0.3), 180);
+      }
+      playWrong() {
+        this.beep(293.66, 'sawtooth', 0.15, 0.2);
+        setTimeout(() => this.beep(220.00, 'sawtooth', 0.22, 0.22), 120);
+      }
+    }
+    const sfx = new SoundEffects();
+
+    const speechEngine = {
+      voices: [],
+      rate: 0.84, // Natural educational cadence
+      pitch: 1.05,
+      activeVoice: null,
+      init() {
+        if ('speechSynthesis' in window) {
+          const load = () => {
+            this.voices = window.speechSynthesis.getVoices();
+            this.activeVoice = this.getCanadianFemaleVoice();
+          };
+          load();
+          if (window.speechSynthesis.onvoiceschanged !== undefined) {
+            window.speechSynthesis.onvoiceschanged = load;
+          }
+        }
+      },
+      getCanadianFemaleVoice() {
+        if (!this.voices || this.voices.length === 0) {
+          this.voices = window.speechSynthesis.getVoices();
+        }
+        if (!this.voices || this.voices.length === 0) return null;
+
+        // 1. Explicit en-CA female
+        const caVoices = this.voices.filter(v =>
+          v.lang === 'en-CA' || v.lang === 'en_CA' || v.lang.toLowerCase().replace('_', '-').startsWith('en-ca')
+        );
+        const femaleKeywords = ['female', 'linda', 'clara', 'samantha', 'amelie', 'heather', 'karen', 'victoria', 'natural'];
+        const caFemale = caVoices.find(v => femaleKeywords.some(fn => v.name.toLowerCase().includes(fn)));
+        if (caFemale) return caFemale;
+        if (caVoices.length > 0) return caVoices[0];
+
+        // 2. High quality North American Natural Female
+        const naVoices = this.voices.filter(v => v.lang.startsWith('en-US') || v.lang.startsWith('en_US'));
+        const naFemale = naVoices.find(v => femaleKeywords.some(fn => v.name.toLowerCase().includes(fn)));
+        if (naFemale) return naFemale;
+
+        return this.voices.find(v => v.lang.startsWith('en')) || null;
+      },
+      speak(text, onStart, onEnd) {
+        if (!('speechSynthesis' in window)) {
+          if (onEnd) onEnd();
+          return;
+        }
+        window.speechSynthesis.cancel();
+        if (window.speechSynthesis.paused) window.speechSynthesis.resume();
+
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'en-CA';
+        utter.rate = this.rate;
+        utter.pitch = this.pitch;
+        utter.volume = 1.0;
+
+        const voice = this.getCanadianFemaleVoice();
+        if (voice) utter.voice = voice;
+
+        let finished = false;
+        const finalize = () => {
+          if (!finished) {
+            finished = true;
+            if (onEnd) onEnd();
+          }
+        };
+
+        utter.onstart = () => { if (onStart) onStart(); };
+        utter.onend = finalize;
+        utter.onerror = finalize;
+
+        window.speechSynthesis.speak(utter);
+      }
+    };
+
+    /* =========================================================================
+       KARAOKE ENGINE (AUDIO-TO-TEXT WORD SYNCHRONIZATION)
+       ========================================================================= */
+
+    const karaokeEngine = {
+      tokens: [],
+      currentIndex: -1,
+      timer: null,
+
+      clearHighlights() {
+        if (this.timer) {
+          clearInterval(this.timer);
+          this.timer = null;
+        }
+        document.querySelectorAll('.k-word').forEach(span => {
+          span.classList.remove('k-active');
+        });
+        this.tokens = [];
+        this.currentIndex = -1;
+      },
+
+      highlightIndex(idx) {
+        if (idx < 0 || idx >= this.tokens.length || idx === this.currentIndex) return;
+        this.currentIndex = idx;
+        for (let i = 0; i < this.tokens.length; i++) {
+          const span = this.tokens[i].span;
+          if (!span) continue;
+          if (i === idx) {
+            span.classList.add('k-active');
+          } else {
+            span.classList.remove('k-active');
+          }
+        }
+      },
+
+      findTokenIndex(charIdx, tokens) {
+        if (!tokens || tokens.length === 0) return -1;
+        if (charIdx <= tokens[0].charStart) return 0;
+        if (charIdx >= tokens[tokens.length - 1].charStart) return tokens.length - 1;
+
+        for (let i = 0; i < tokens.length - 1; i++) {
+          if (charIdx >= tokens[i].charStart && charIdx < tokens[i + 1].charStart) {
+            return i;
+          }
+        }
+        return tokens.length - 1;
+      },
+
+      speakWithKaraoke(containerElement, customSpokenText, options = {}) {
+        this.clearHighlights();
+
+        if (!('speechSynthesis' in window)) {
+          if (options.onEnd) options.onEnd();
+          return;
+        }
+
+        window.speechSynthesis.cancel();
+        if (window.speechSynthesis.paused) window.speechSynthesis.resume();
+
+        // Wrap words inside container if not already wrapped
+        const words = (customSpokenText || containerElement.innerText.trim()).split(/\s+/).filter(Boolean);
+        containerElement.innerHTML = words.map(w => `<span class="k-word">${w}</span>`).join(' ');
+
+        const spans = Array.from(containerElement.querySelectorAll('.k-word'));
+        const tokensList = [];
+        spans.forEach(span => {
+          tokensList.push({ word: span.textContent.trim(), span: span });
+        });
+
+        this.tokens = tokensList;
+        const fullUtteranceText = customSpokenText || tokensList.map(t => t.word).join(' ');
+
+        // Track char boundaries
+        const regex = /[a-zA-Z0-9']+/g;
+        let match;
+        let matchIdx = 0;
+        while ((match = regex.exec(fullUtteranceText)) !== null && matchIdx < tokensList.length) {
+          tokensList[matchIdx].charStart = match.index;
+          tokensList[matchIdx].charEnd = match.index + match[0].length;
+          matchIdx++;
+        }
+
+        const utter = new SpeechSynthesisUtterance(fullUtteranceText);
+        utter.lang = 'en-CA';
+        utter.rate = speechEngine.rate;
+        utter.pitch = speechEngine.pitch;
+        utter.volume = 1.0;
+
+        const caVoice = speechEngine.getCanadianFemaleVoice();
+        if (caVoice) utter.voice = caVoice;
+
+        let boundaryFired = false;
+        utter.onboundary = (e) => {
+          if (e.name === 'word' || !e.name) {
+            boundaryFired = true;
+            const idx = this.findTokenIndex(e.charIndex, tokensList);
+            if (idx !== -1) this.highlightIndex(idx);
+          }
+        };
+
+        utter.onstart = () => {
+          this.highlightIndex(0);
+          if (options.onStart) options.onStart();
+
+          // Fallback timer
+          const msPerWord = Math.max(260, Math.round(550 / utter.rate));
+          let currentStep = 0;
+          this.timer = setInterval(() => {
+            if (!boundaryFired && currentStep < tokensList.length) {
+              this.highlightIndex(currentStep);
+              currentStep++;
+            }
+          }, msPerWord);
+        };
+
+        const finalize = () => {
+          this.clearHighlights();
+          if (options.onEnd) options.onEnd();
+        };
+
+        utter.onend = finalize;
+        utter.onerror = finalize;
+
+        window.speechSynthesis.speak(utter);
+      }
+    };
+
+    /* =========================================================================
+       SECTION 1: MONTH CARDS AUDIO & SEQUENTIAL PLAYBACK
+       ========================================================================= */
+
+    function playMonthCard(monthNum, enName, arName) {
+      sfx.playPop();
+      const card = document.getElementById(`month-card-${monthNum}`);
+      if (card) card.classList.add('sync-active-glow');
+
+      speechEngine.speak(enName, null, () => {
+        if (card) card.classList.remove('sync-active-glow');
+      });
+      showToast(enName, `الشهر رقم ${monthNum}: ${arName}`, "📅");
+    }
+
+    let isPlayingMonthsSequence = false;
+    function playAllMonthsSequentially() {
+      if (isPlayingMonthsSequence) {
+        speechEngine.speak(""); // stop
+        isPlayingMonthsSequence = false;
+        document.getElementById('playAllIcon').textContent = "▶️";
+        document.getElementById('playAllLabel').textContent = "قراءة جميع الشهور بالترتيب (1 - 12)";
+        return;
+      }
+
+      isPlayingMonthsSequence = true;
+      document.getElementById('playAllIcon').textContent = "⏹️";
+      document.getElementById('playAllLabel').textContent = "إيقاف القراءة المتتابعة";
+
+      let curIdx = 0;
+      function next() {
+        if (!isPlayingMonthsSequence) return;
+        if (curIdx >= MONTHS_DATA.length) {
+          isPlayingMonthsSequence = false;
+          document.getElementById('playAllIcon').textContent = "▶️";
+          document.getElementById('playAllLabel').textContent = "قراءة جميع الشهور بالترتيب (1 - 12)";
+          fireConfetti(0.4);
+          showToast("تم الانتهاء!", "تمت قراءة جميع شهور السنة بنجاح 🌟", "🎉");
+          return;
+        }
+
+        const m = MONTHS_DATA[curIdx];
+        const card = document.getElementById(`month-card-${m.num}`);
+        if (card) card.classList.add('sync-active-glow');
+
+        speechEngine.speak(`Month ${m.num}. ${m.en}`, null, () => {
+          if (card) card.classList.remove('sync-active-glow');
+          curIdx++;
+          setTimeout(next, 450);
+        });
+      }
+      next();
+    }
+
+    /* =========================================================================
+       SECTION 2: WORD BANK & DRAG AND DROP CONVERSATION
+       ========================================================================= */
+
+    function renderMonthsWordBank() {
+      const container = document.getElementById('wordBankMonths');
+      container.innerHTML = '';
+
+      MONTHS_DATA.forEach(item => {
+        const isPlaced = Object.values(currentPlacements).includes(item.en);
+        const isSelected = selectedWord === item.en;
+
+        const chip = document.createElement('div');
+        chip.draggable = true;
+        chip.className = `word-chip px-3.5 py-1.5 rounded-xl font-black text-xs sm:text-sm text-white shadow-xs transition flex items-center gap-1.5 ${item.color} ${
+          isSelected ? 'word-chip-selected' : ''
+        }`;
+
+        chip.innerHTML = `
+          <span>${item.emoji}</span>
+          <span>${item.en}</span>
+        `;
+
+        // HTML5 drag
+        chip.ondragstart = (e) => {
+          e.dataTransfer.setData('text/plain', item.en);
+          selectedWord = item.en;
+          sfx.playPop();
+        };
+
+        // Click / touch to select
+        chip.onclick = () => {
+          sfx.playPop();
+          if (selectedWord === item.en) {
+            selectedWord = null;
+          } else {
+            selectedWord = item.en;
+            speechEngine.speak(item.en);
+          }
+          renderMonthsWordBank();
+        };
+
+        container.appendChild(chip);
+      });
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.currentTarget.classList.add('drag-over');
+    }
+
+    function handleDragLeave(e) {
+      e.currentTarget.classList.remove('drag-over');
+    }
+
+    function handleDrop(e, slotKey) {
+      e.preventDefault();
+      e.currentTarget.classList.remove('drag-over');
+      const word = e.dataTransfer.getData('text/plain') || selectedWord;
+      if (word) {
+        placeMonthInSlot(slotKey, word);
+      }
+    }
+
+    function handleSlotClick(slotKey) {
+      if (selectedWord) {
+        placeMonthInSlot(slotKey, selectedWord);
+      } else if (currentPlacements[slotKey]) {
+        sfx.playPop();
+        currentPlacements[slotKey] = null;
+        updateSlotDisplay(slotKey, null);
+        renderMonthsWordBank();
+      } else {
+        sfx.playPop();
+        showToast("اختر شهراً أولاً", "انقر على أي شهر من صندوق الشهور بالأعلى ثم انقر هنا", "💡");
+      }
+    }
+
+    function placeMonthInSlot(slotKey, monthName) {
+      sfx.playSuccess();
+      currentPlacements[slotKey] = monthName;
+      selectedWord = null;
+      updateSlotDisplay(slotKey, monthName);
+      renderMonthsWordBank();
+
+      // Update roleplay text if applicable
+      syncRoleplayAnswers();
+      updateMasterScore();
+      showToast("رائع!", `تم اختيار شهر ${monthName} بنجاح ✨`, "🎯");
+    }
+
+    function updateSlotDisplay(slotKey, monthName) {
+      const slotEl = document.querySelector(`.drop-slot[data-slot="${slotKey}"]`);
+      if (!slotEl) return;
+
+      const mData = MONTHS_DATA.find(m => m.en === monthName);
+      if (monthName && mData) {
+        slotEl.innerHTML = `<span class="text-slate-900 font-black text-sm sm:text-base underline">${mData.emoji} ${monthName}</span>`;
+        slotEl.classList.add('bg-white', 'border-solid');
+        slotEl.classList.remove('border-dashed');
+
+        if (slotKey === 'birthday') {
+          document.getElementById('arBirthdayHint').textContent = mData.ar;
+        } else if (slotKey === 'favorite') {
+          document.getElementById('arFavoriteHint').textContent = mData.ar;
+        }
+      } else {
+        slotEl.innerHTML = `<span class="slot-text text-slate-400 text-xs">.......... [اختر شهراً]</span>`;
+        slotEl.classList.remove('bg-white', 'border-solid');
+        slotEl.classList.add('border-dashed');
+
+        if (slotKey === 'birthday') {
+          document.getElementById('arBirthdayHint').textContent = '.......';
+        } else if (slotKey === 'favorite') {
+          document.getElementById('arFavoriteHint').textContent = '.......';
+        }
+      }
+    }
+
+    function speakDialogueAnswer(dialogueNum) {
+      sfx.playPop();
+      if (dialogueNum === 1) {
+        const m = currentPlacements.birthday || "October";
+        speechEngine.speak(`My birthday is in ${m}.`);
+      } else if (dialogueNum === 3) {
+        const m = currentPlacements.favorite || "March";
+        speechEngine.speak(`My favorite month is ${m}.`);
+      }
+    }
+
+    /* =========================================================================
+       SECTION 3: LISTENING CHALLENGE (QUIZ)
+       ========================================================================= */
+
+    function setupNewListeningQuizQuestion() {
+      // Pick random month as target
+      const randomIdx = Math.floor(Math.random() * MONTHS_DATA.length);
+      quizCurrentTarget = MONTHS_DATA[randomIdx];
+
+      // Pick 3 random distractors
+      const distractors = MONTHS_DATA.filter(m => m.en !== quizCurrentTarget.en)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3);
+
+      const options = [quizCurrentTarget, ...distractors].sort(() => 0.5 - Math.random());
+
+      const grid = document.getElementById('quizOptionsGrid');
+      grid.innerHTML = '';
+
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = "p-3 rounded-2xl bg-white border-2 border-slate-200 hover:border-teal-400 text-slate-800 font-black text-sm shadow-xs transition active:scale-95 flex items-center justify-center gap-2";
+        btn.innerHTML = `<span>${opt.emoji}</span><span>${opt.en}</span>`;
+        btn.onclick = () => handleQuizOptionClick(opt, btn);
+        grid.appendChild(btn);
+      });
+
+      const fb = document.getElementById('quizFeedbackBox');
+      fb.classList.add('hidden');
+    }
+
+    function playQuizPromptAudio() {
+      if (!quizCurrentTarget) return;
+      sfx.playPop();
+      const btn = document.getElementById('quizPlayPromptBtn');
+      btn.classList.add('sync-active-glow');
+
+      speechEngine.speak(quizCurrentTarget.en, null, () => {
+        btn.classList.remove('sync-active-glow');
+      });
+    }
+
+    function handleQuizOptionClick(chosenMonth, btnEl) {
+      sfx.playPop();
+      const fb = document.getElementById('quizFeedbackBox');
+      fb.classList.remove('hidden');
+
+      if (chosenMonth.en === quizCurrentTarget.en) {
+        sfx.playSuccess();
+        quizScore++;
+        document.getElementById('listenScoreVal').textContent = quizScore;
+        btnEl.className = "p-3 rounded-2xl bg-emerald-500 text-white border-2 border-emerald-600 font-black text-sm shadow-md transition flex items-center justify-center gap-2";
+        fb.className = "mt-4 text-xs font-black px-4 py-2 rounded-xl bg-emerald-100 text-emerald-800 border border-emerald-300";
+        fb.textContent = `✅ أحسنت! إجابة صحيحة: ${chosenMonth.en} (${chosenMonth.ar})`;
+        fireConfetti(0.3);
+        updateMasterScore();
+
+        setTimeout(() => {
+          setupNewListeningQuizQuestion();
+          playQuizPromptAudio();
+        }, 1600);
+      } else {
+        sfx.playWrong();
+        btnEl.className = "p-3 rounded-2xl bg-rose-50 text-rose-700 border-2 border-rose-300 font-black text-sm shadow-xs transition flex items-center justify-center gap-2 animate-shake";
+        fb.className = "mt-4 text-xs font-black px-4 py-2 rounded-xl bg-rose-100 text-rose-800 border border-rose-300";
+        fb.textContent = `❌ ليست صحيحة، حاول مجدداً واستمع جيداً للصوت!`;
+      }
+    }
+
+    /* =========================================================================
+       SECTION 4: TWO-CHARACTER INTERACTIVE ROLE-PLAY GAME
+       ========================================================================= */
+
+    function switchRoleplayQuestion(qNum) {
+      sfx.playPop();
+      activeRoleplayQuestionIdx = qNum;
+
+      // Update tabs
+      for (let i = 1; i <= 4; i++) {
+        const tab = document.getElementById(`rpTab-${i}`);
+        if (tab) {
+          if (i === qNum) {
+            tab.className = "px-3 py-1.5 rounded-xl border-2 border-indigo-600 bg-indigo-600 text-white font-black transition";
+          } else {
+            tab.className = "px-3 py-1.5 rounded-xl border-2 border-slate-200 bg-white text-slate-700 font-black hover:border-indigo-300 transition";
+          }
+        }
+      }
+
+      syncRoleplayAnswers();
+    }
+
+    function syncRoleplayAnswers() {
+      const qData = ROLEPLAY_DIALOGUES[activeRoleplayQuestionIdx];
+
+      // Character 1 (Asks)
+      document.getElementById('rpChar1Text').textContent = `"${qData.qEn}"`;
+      document.getElementById('rpChar1Ar').textContent = `"${qData.qAr}"`;
+
+      // Character 2 (Answers)
+      let ansEn = qData.defaultAEn;
+      let ansAr = qData.defaultAAr;
+
+      if (qData.slotKey === 'birthday' && currentPlacements.birthday) {
+        ansEn = `My birthday is in ${currentPlacements.birthday}.`;
+        ansAr = `يوم مولدي يكون في شهر ${currentPlacements.birthday}.`;
+      } else if (qData.slotKey === 'favorite' && currentPlacements.favorite) {
+        ansEn = `My favorite month is ${currentPlacements.favorite}.`;
+        ansAr = `شهري المفضل هو شهر ${currentPlacements.favorite}.`;
+      }
+
+      document.getElementById('rpChar2Text').textContent = `"${ansEn}"`;
+      document.getElementById('rpChar2Ar').textContent = `"${ansAr}"`;
+    }
+
+    function speakRoleplaySpeaker(speakerNum, onFinish) {
+      sfx.playPop();
+      const qData = ROLEPLAY_DIALOGUES[activeRoleplayQuestionIdx];
+      const bubble = document.getElementById(`rpBubble${speakerNum}`);
+      const textContainer = document.getElementById(`rpChar${speakerNum}Text`);
+      const avatar = document.getElementById(`rpChar${speakerNum}Avatar`);
+
+      let spokenText = "";
+      if (speakerNum === 1) {
+        spokenText = qData.qEn;
+      } else {
+        if (qData.slotKey === 'birthday' && currentPlacements.birthday) {
+          spokenText = `My birthday is in ${currentPlacements.birthday}.`;
+        } else if (qData.slotKey === 'favorite' && currentPlacements.favorite) {
+          spokenText = `My favorite month is ${currentPlacements.favorite}.`;
+        } else {
+          spokenText = qData.defaultAEn;
+        }
+      }
+
+      karaokeEngine.speakWithKaraoke(textContainer || bubble, spokenText, {
+        onStart: () => {
+          if (bubble) bubble.classList.add('sync-active-glow');
+          if (avatar) avatar.classList.add('scale-105');
+        },
+        onEnd: () => {
+          if (bubble) bubble.classList.remove('sync-active-glow');
+          if (avatar) avatar.classList.remove('scale-105');
+          if (onFinish) onFinish();
+        }
+      });
+    }
+
+    function playFullRoleplaySequence() {
+      const btn = document.getElementById('playSequenceBtn');
+      btn.disabled = true;
+      btn.classList.add('opacity-60');
+
+      showToast("Roleplay Playing", "نورة تطرح السؤال، ثم تجيب سارة بالتزامن 👧💬👧", "▶️");
+
+      speakRoleplaySpeaker(1, () => {
+        setTimeout(() => {
+          speakRoleplaySpeaker(2, () => {
+            btn.disabled = false;
+            btn.classList.remove('opacity-60');
+            fireConfetti(0.3);
+            showToast("Well Done!", "اكتمل الحوار الثنائي بنجاح 🌟", "🎉");
+          });
+        }, 600);
+      });
+    }
+
+    /* =========================================================================
+       SCORE & GENERAL HELPERS
+       ========================================================================= */
+
+    function updateMasterScore() {
+      let score = 0;
+      if (currentPlacements.birthday) score += 2;
+      if (currentPlacements.favorite) score += 2;
+      score += Math.min(quizScore, 5);
+      score += 3; // Roleplay exploration
+
+      document.getElementById('globalScoreBadge').textContent = `النقاط: ${score} / 12`;
+    }
+
+    let isArabicVisible = true;
+    function toggleArabicTranslations() {
+      isArabicVisible = !isArabicVisible;
+      document.querySelectorAll('.arabic-trans-box').forEach(el => {
+        el.style.display = isArabicVisible ? '' : 'none';
+      });
+      document.getElementById('transToggleLabel').textContent = isArabicVisible ? "الترجمة: مفعّلة" : "الترجمة: مخفية";
+      showToast("الترجمة العربية", isArabicVisible ? "تم إظهار الترجمة" : "تم إخفاء الترجمة لتعزيز الاستماع", "🌐");
+    }
+
+    function toggleSpeechRate() {
+      sfx.playPop();
+      if (speechEngine.rate === 0.84) {
+        speechEngine.rate = 0.70;
+        document.getElementById('speedToggleLabel').textContent = "سرعة: بطيئة 🐢";
+        showToast("سرعة الصوت", "تم ضبط الصوت على سرعة هادئة وبطيئة", "🐢");
+      } else {
+        speechEngine.rate = 0.84;
+        document.getElementById('speedToggleLabel').textContent = "سرعة: عادية ✨";
+        showToast("سرعة الصوت", "تم ضبط الصوت على سرعة عادية وطبيعية", "⚡");
+      }
+    }
+
+    function testCanadianVoice() {
+      sfx.playPop();
+      speechEngine.speak("Hello students! Let's learn the twelve months of the year together!");
+      showToast("Canadian Accent 🇨🇦", "تم تفعيل النطق الكندي الأنثوي الفصيح", "🎙️");
+    }
+
+    function resetAllWorksheet() {
+      sfx.playPop();
+      currentPlacements.birthday = null;
+      currentPlacements.favorite = null;
+      selectedWord = null;
+      updateSlotDisplay('birthday', null);
+      updateSlotDisplay('favorite', null);
+      renderMonthsWordBank();
+      quizScore = 0;
+      document.getElementById('listenScoreVal').textContent = "0";
+      setupNewListeningQuizQuestion();
+      switchRoleplayQuestion(1);
+      updateMasterScore();
+      showToast("إعادة تعيين", "تمت إعادة تعيين جميع الأنشطة بنجاح", "🔄");
+    }
+
+    function showToast(title, message, icon = "✨") {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = message;
+      document.getElementById('toastIcon').textContent = icon;
+
+      toast.classList.remove('translate-y-28', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toast._timeout);
+      toast._timeout = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-28', 'opacity-0');
+      }, 2500);
+    }
+
+    function fireConfetti(power = 0.5) {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: Math.floor(65 * power),
+          spread: 70,
+          origin: { y: 0.7 }
+        });
+      }
+    }
+
+    window.onload = function() {
+      speechEngine.init();
+      renderMonthsWordBank();
+      setupNewListeningQuizQuestion();
+      switchRoleplayQuestion(1);
+      updateMasterScore();
+      setTimeout(() => {
+        showToast("Glory English Academy", "ورقة عمل شهور السنة جاهزة للتفاعل 🌟", "📅");
+      }, 500);
+    };
+  </script>
+</body>
+</html>
